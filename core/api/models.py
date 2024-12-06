@@ -12,12 +12,22 @@ class Category(models.Model):
         verbose_name_plural = "Category"    # Keep singular in admin
 
 class Product(models.Model):
+    TAG_CHOICES = [
+        ('new', 'New'),
+        ('sale', 'Sale'),
+        ('featured', 'Featured'),
+    ]
     name_EN = models.CharField(max_length=100)
     name_AR = models.CharField(max_length=100)
     description_EN = models.TextField()
     description_AR = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
-
+    pdf_file = models.FileField(upload_to='pdfs/')
+    tag = models.CharField(
+        max_length=20,
+        choices=TAG_CHOICES,
+        default='new',  # Set a default choice (optional)
+    )
     def __str__(self):
         return self.name_AR
     class Meta:

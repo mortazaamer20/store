@@ -6,8 +6,8 @@ class ProductImageInline(admin.TabularInline):
     extra = 1  # Number of empty image fields shown by default
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name_AR', 'category')
-    search_fields = ('name_AR','category')
+    list_display = ('name_AR', 'category','pdf_file','tag')
+    search_fields = ('name_AR','category','tag')
     list_filter = ('category',)
     inlines = [ProductImageInline]
 
