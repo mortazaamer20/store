@@ -28,6 +28,10 @@ DEBUG = True
 ALLOWED_HOSTS =[ 
     'localhost',           # Allow local development
     '127.0.0.1',
+'145.223.82.243',
+'https://admin.wafaa-alkhaleej.com',
+'http://admin.wafaa-alkhaleej.com',
+'admin.wafaa-alkhaleej.com'
 ]
 
 
@@ -78,8 +82,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'core.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',  # React development server
-    
+    'http://localhost:3000',
+    'https://wafaa-alkhaleej.com'
 ]
 
 # Database
@@ -117,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'AR'
 
-TIME_ZONE = 'Asia/baghdad'
+TIME_ZONE = 'Asia/Baghdad'
 
 USE_I18N = True
 
@@ -145,3 +149,4 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,  # Adjust as needed
 }
+STATIC_ROOT = '/root/var/www/store/core/staticfiles'
