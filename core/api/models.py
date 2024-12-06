@@ -3,6 +3,7 @@ from django.db import models
 class Category(models.Model):
     name_EN = models.CharField(max_length=100)
     name_AR = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='categories/', null=True, blank=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='subcategories')
 
     def __str__(self):

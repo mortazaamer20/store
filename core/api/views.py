@@ -9,10 +9,22 @@ from rest_framework.views import APIView
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
+from django_filters import rest_framework as filters
+
 class CategoryListView(generics.ListAPIView):
     queryset = Category.objects.filter(parent__isnull=True)  # Only top-level categories
     serializer_class = CategorySerializer
 
+
+class ProductFilter(filters.FilterSet):
+    search = filters.CharFilter(method='filter_by_name')
+
+    class Meta:
+        model = Product
+        fields = ['category', 'search']
+
+    def filter_by_name(self, queryset, name, value):
+        return queryset.filter(name_AR__icontains=value) | queryset.filter(name_EN__icontains=value)
 
 class ProductListView(generics.ListAPIView):
     queryset = Product.objects.prefetch_related(
