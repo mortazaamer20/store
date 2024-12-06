@@ -18,7 +18,7 @@ class Product(models.Model):
     description_EN = models.TextField()
     description_AR = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
-
+    pdf = models.FileField(upload_to='product_pdfs/', null=True, blank=True)  # PDF file field
     def __str__(self):
         return self.name_AR
     class Meta:
