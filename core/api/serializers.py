@@ -17,12 +17,21 @@ class CategorySerializer(serializers.ModelSerializer):
         return CategorySerializer(obj.subcategories.all(), many=True).data
 
 class ProductSerializer(serializers.ModelSerializer):
+
+    pdf_file_url = serializers.SerializerMethodField()
+
     category = CategorySerializer()
     images = ProductImageSerializer(many=True,read_only=True)
 
     class Meta:
         model = Product
-        fields = ['id', 'name_AR','name_EN', 'description_AR', 'category', 'images']
+        fields = ['id', 'name_AR','name_EN', 'description_AR', 'category', 'images','pdf_file_url','tag']
+
+    def get_pdf_file_url(self, obj):
+        # Return the URL of the PDF file
+        if obj.pdf_file:
+            return obj.pdf_file.url  # This gives the full URL of the PDF file
+        return None
 
 class ProjectsSerializer(serializers.ModelSerializer):
     class Meta:

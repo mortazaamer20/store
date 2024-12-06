@@ -32,7 +32,7 @@ class ProductListView(generics.ListAPIView):
     ).select_related('category')
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_class = ProductFilter
+    filterset_fields = ['category','name_AR','name_EN','tag']
 
 class ProductDetailView(generics.RetrieveAPIView):
     queryset = Product.objects.all()
