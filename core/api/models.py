@@ -14,9 +14,9 @@ class Category(models.Model):
 
 class Product(models.Model):
     TAG_CHOICES = [
-        ('new', 'New'),
-        ('sale', 'Sale'),
-        ('featured', 'Featured'),
+        ('vitra', 'vitra'),
+        ('GEBERIT', 'GEBERIT'),
+        ('Tthermex', 'Tthermex'),
     ]
     name_EN = models.CharField(max_length=100)
     name_AR = models.CharField(max_length=100)
