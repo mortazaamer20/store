@@ -25,7 +25,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['id', 'name_AR','name_EN', 'description_AR', 'category', 'images','pdf_file_url','tag']
+        fields = ['id', 'name_AR','name_EN', 'description_AR','description_EN', 'category', 'images','pdf_file_url','tag']
 
     def get_pdf_file_url(self, obj):
         # Return the URL of the PDF file
